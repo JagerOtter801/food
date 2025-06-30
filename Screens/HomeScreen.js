@@ -23,50 +23,52 @@ const HomeScreen = () => {
     }
 
     // Render the results content based on search state
-    const renderContent = () => {
-        // If we have search results
-        if (searchResults && searchResults.length > 0) {
-            // If at least some results have price information
-            if (hasPricedResults()) {
-                return (
-                    <View style={styles.resultsContainer}>
-                        <Text style={styles.categoryTitle}>Cost Effective</Text>
-                        <ResultsScreen results={filterResultsByPrice('$')}/>
-                        
-                        <Text style={styles.categoryTitle}>Mid-range Range</Text>
-                        <ResultsScreen results={filterResultsByPrice('$$')}/>
-                        
-                        <Text style={styles.categoryTitle}>Luxury Range</Text>
-                        <ResultsScreen results={filterResultsByPrice('$$$')}/>
-                        
-                        <Text style={styles.categoryTitle}>Bougue Level</Text>
-                        <ResultsScreen results={filterResultsByPrice('$$$$')}/>
-                        
-                        {/* Show results with no price if any exist */}
-                        {resultsWithoutPrice().length > 0 && (
-                            <>
-                                <Text style={styles.categoryTitle}>Price Not Listed</Text>
-                                <ResultsScreen results={resultsWithoutPrice()}/>
-                            </>
-                        )}
-                    </View>
-                );
-            } 
-            // If no results have price information, show all results in one list
-            else {
-                return (
-                    <View style={styles.resultsContainer}>
-                        <Text style={styles.categoryTitle}>All Results</Text>
-                        <ResultsScreen results={searchResults}/>
-                    </View>
-                );
-            }
-        } 
-        // If a search was performed but no results found
-        else if (term.length > 0) {
+const renderContent = () => {
+    if (searchResults && searchResults.length > 0) {
+        if (hasPricedResults()) {
+            // Pre-filter all price categories
+            const costEffectiveResults = filterResultsByPrice('$');
+            const midRangeResults = filterResultsByPrice('$$');
+            const luxuryResults = filterResultsByPrice('$$$');
+            const bougieResults = filterResultsByPrice('$$$$');
+            const noPriceResults = resultsWithoutPrice();
+
             return (
-                <View style={styles.messageContainer}>
-                    <Text style={styles.message}>No Results Found</Text>
+                <View style={styles.resultsContainer}>
+                    {costEffectiveResults.length > 0 && (
+                        <>
+                            <Text style={styles.categoryTitle}>Cost Effective</Text>
+                            <ResultsScreen results={costEffectiveResults}/>
+                        </>
+                    )}
+                    
+                    {midRangeResults.length > 0 && (
+                        <>
+                            <Text style={styles.categoryTitle}>Mid-range Range</Text>
+                            <ResultsScreen results={midRangeResults}/>
+                        </>
+                    )}
+                    
+                    {luxuryResults.length > 0 && (
+                        <>
+                            <Text style={styles.categoryTitle}>Luxury Range</Text>
+                            <ResultsScreen results={luxuryResults}/>
+                        </>
+                    )}
+                    
+                    {bougieResults.length > 0 && (
+                        <>
+                            <Text style={styles.categoryTitle}>Bougue Level</Text>
+                            <ResultsScreen results={bougieResults}/>
+                        </>
+                    )}
+                    
+                    {noPriceResults.length > 0 && (
+                        <>
+                            <Text style={styles.categoryTitle}>Price Not Listed</Text>
+                            <ResultsScreen results={noPriceResults}/>
+                        </>
+                    )}
                 </View>
             );
         } 
@@ -79,6 +81,7 @@ const HomeScreen = () => {
             );
         }
     };
+}
 
     return (
         <>

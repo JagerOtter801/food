@@ -8,7 +8,7 @@ const ResultDetailScreen = () => {
     const navigation = useNavigation();
 
     const route = useRoute();
-    const { item } = route.params;
+    const { item } = route.params || {};// Adding a fallback to avoid errors if item is undefined
 
 
     return (

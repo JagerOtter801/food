@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     resultContainer: {
-        marginRight: 10,
-        marginLeft: 10,
+        marginRight: 5,
+        marginLeft: 5,
         backgroundColor: '#fff4e6',
         borderWidth: 1,
         borderColor: '#ddd',

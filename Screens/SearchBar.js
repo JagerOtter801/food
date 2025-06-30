@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     searchBar : {
         height: 40, 
         flexDirection: 'row',
-        alignItems: 'space-between',
+        alignItems: 'center',
         borderWidth: 2,
         margin: 10,
         borderRadius: 10,
