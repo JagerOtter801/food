@@ -29,6 +29,11 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#fff4e6',
     },
+    input: {
+    flex: 1,
+    marginLeft: 10,
+    fontSize: 16,
+},
 });
 
 
