@@ -15,7 +15,7 @@ const ResultDetailScreen = () => {
         <View style={styles.container}>
             <Text>{item.name}</Text>
             <Text>{item.display_phone}</Text>
-            {item.isClosed ? (
+            {item.is_closed ? (
                 <Text style={{ color: 'red', fontWeight: 'bold' }}>Closed</Text>
             ) : (
                 <Text style={{ color: 'green', fontWeight: 'bold' }}>Open</Text>
