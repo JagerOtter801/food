@@ -1,0 +1,1 @@
+This project is just to keep skills up to date and do the rudementary things I have done in the past. Through consistent practice of fundeamentals I think that a developer can achieve an optimal flow of getting things done. 
